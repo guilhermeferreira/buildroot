@@ -1,0 +1,45 @@
+config BR2_PACKAGE_PAHO_MQTT_C
+	bool "paho-mqtt3-c"
+	help
+	  This code builds libraries which enable applications to
+	  connect to an MQTT broker to publish messages, and to
+	  subscribe to topics and receive published messages.
+
+	  The Paho MQTT C Client is a fully fledged MQTT client
+	  written in ANSI standard C. Both synchronous and
+	  asynchronous modes of operation are supported.
+
+	  http://www.eclipse.org/paho/clients/c/
+
+if BR2_PACKAGE_PAHO_MQTT_C
+
+config BR2_PACKAGE_PAHO_MQTT_C_SYNCHRONOUS
+	bool "Synchronous API"
+	default y
+	help
+	  Synchronous for which the API calls start with MQTTClient.
+
+	  The synchronous API is intended to be simpler and more
+	  helpful. To this end, some of the calls will block until
+	  the operation has completed, which makes programming easier.
+
+config BR2_PACKAGE_PAHO_MQTT_C_ASYNCHRONOUS
+	bool "Asynchronous API"
+	default n
+	help
+	  Asynchronous for which the API calls start with MQTTAsync.
+
+	  In asynchronous API, no calls ever block. All notifications
+	  of API call results are made by callbacks. This makes the
+	  API suitable for use in windowed environments like iOS for
+	  instance, where the application is not the main thread of
+	  control
+
+config BR2_PACKAGE_PAHO_MQTT_C_OPENSSL
+	bool "Secure API"
+	default n
+	depends on BR2_PACKAGE_OPENSSL
+	help
+	  Establish an SSL/TLS connection using the OpenSSL library.
+
+endif
