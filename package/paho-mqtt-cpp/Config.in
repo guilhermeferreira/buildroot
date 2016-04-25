@@ -1,0 +1,14 @@
+config BR2_PACKAGE_PAHO_MQTT_CPP
+	bool "paho-mqtt3-cpp"
+	select BR2_PACKAGE_PAHO_MQTT_C
+	select BR2_PACKAGE_PAHO_MQTT_C_ASYNCHRONOUS
+	help
+	  This code builds libraries which enable applications to
+	  connect to an MQTT broker to publish messages, and to
+	  subscribe to topics and receive published messages.
+
+	  This C++ client provides an interface which is intended
+	  to mirror the Java API as closely as possible. It requires
+	  the Paho MQTT C Asynchronous Client library.
+
+	  http://www.eclipse.org/paho/clients/cpp/
